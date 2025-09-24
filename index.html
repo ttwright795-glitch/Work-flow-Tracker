@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workflow Tracker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0b0b0f">
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header><h1>Workflow Tracker</h1></header>
+  <main>
+    <form id="jobForm">
+      <div class="grid two">
+        <div class="field"><label>Year</label><input id="year" /></div>
+        <div class="field"><label>Date</label><input id="date" type="date" /></div>
+        <div class="field"><label>Make</label><input id="make" /></div>
+        <div class="field"><label>Plate #</label><input id="plate" /></div>
+        <div class="field"><label>Model</label><input id="model" /></div>
+        <div class="field"><label>VIN #</label><input id="vin" /></div>
+        <div class="field"><label>Mileage</label><input id="mileage" /></div>
+      </div>
+      <div class="field full"><label>Vehicle Codes</label><textarea id="codes"></textarea></div>
+      <div class="field"><label>Job Type</label><select id="jobType"></select><button type="button" id="addType">+</button></div>
+      <div class="field full"><label>Notes</label><textarea id="notes"></textarea></div>
+      <div class="actions">
+        <button type="button" id="saveBtn">Save Job</button>
+        <button type="button" id="emailBtn">Email Job</button>
+      </div>
+    </form>
+    <hr>
+    <section>
+      <h2>Search</h2>
+      <input id="keyword" placeholder="Keyword..." />
+      <button id="searchBtn" type="button">Search Jobs</button>
+      <ul id="results"></ul>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
