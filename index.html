@@ -11,34 +11,102 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header><h1>Workflow Tracker</h1></header>
+  <header>
+    <h1>Workflow Tracker</h1>
+  </header>
+
   <main>
-    <form id="jobForm">
-      <div class="grid two">
-        <div class="field"><label>Year</label><input id="year" /></div>
-        <div class="field"><label>Date</label><input id="date" type="date" /></div>
-        <div class="field"><label>Make</label><input id="make" /></div>
-        <div class="field"><label>Plate #</label><input id="plate" /></div>
-        <div class="field"><label>Model</label><input id="model" /></div>
-        <div class="field"><label>VIN #</label><input id="vin" /></div>
-        <div class="field"><label>Mileage</label><input id="mileage" /></div>
-      </div>
-      <div class="field full"><label>Vehicle Codes</label><textarea id="codes"></textarea></div>
-      <div class="field"><label>Job Type</label><select id="jobType"></select><button type="button" id="addType">+</button></div>
-      <div class="field full"><label>Notes</label><textarea id="notes"></textarea></div>
-      <div class="actions">
+    <form id="jobForm" autocomplete="off">
+      <section class="grid two">
+        <div class="field">
+          <label for="year">Year</label>
+          <input id="year" name="year" type="text" inputmode="numeric" maxlength="4" />
+        </div>
+        <div class="field">
+          <label for="date">Date</label>
+          <input id="date" name="date" type="date" />
+        </div>
+
+        <div class="field">
+          <label for="make">Make</label>
+          <input id="make" name="make" type="text" />
+        </div>
+        <div class="field">
+          <label for="plate">Plate #</label>
+          <input id="plate" name="plate" type="text" />
+        </div>
+
+        <div class="field">
+          <label for="model">Model</label>
+          <input id="model" name="model" type="text" />
+        </div>
+        <div class="field">
+          <label for="vin">VIN #</label>
+          <input id="vin" name="vin" type="text" />
+        </div>
+
+        <div class="field">
+          <label for="mileage">Mileage</label>
+          <input id="mileage" name="mileage" type="text" inputmode="numeric" />
+        </div>
+      </section>
+
+      <section class="field full">
+        <label for="codes">Vehicle Codes</label>
+        <textarea id="codes" name="codes" rows="5" placeholder="e.g., P0301, P0420..."></textarea>
+      </section>
+
+      <section class="grid two">
+        <div class="field">
+          <label for="jobType">Job Type</label>
+          <div class="row">
+            <select id="jobType" name="jobType"></select>
+            <button type="button" id="addTypeBtn" class="mini">+</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" rows="4"></textarea>
+        </div>
+      </section>
+
+      <section class="actions">
         <button type="button" id="saveBtn">Save Job</button>
         <button type="button" id="emailBtn">Email Job</button>
-      </div>
+        <button type="reset" id="clearBtn" class="alt">Clear</button>
+      </section>
     </form>
-    <hr>
-    <section>
+
+    <hr class="divider" />
+
+    <section id="searchSection">
       <h2>Search</h2>
-      <input id="keyword" placeholder="Keyword..." />
-      <button id="searchBtn" type="button">Search Jobs</button>
-      <ul id="results"></ul>
+      <p class="sub">Search by any criteria you enter above <em>or</em> by keyword.</p>
+      <div class="grid two">
+        <div class="field">
+          <label for="keyword">Keyword</label>
+          <input id="keyword" type="text" placeholder="VIN, plate, code, etc." />
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <button id="searchBtn" type="button">Search Jobs</button>
+        </div>
+      </div>
+      <div class="actions tight">
+        <button id="searchByFormBtn" type="button" class="alt">Search Using Form Criteria</button>
+        <button id="showAllBtn" type="button" class="alt">Show All</button>
+        <button id="exportBtn" type="button" class="alt">Export Data</button>
+        <input id="importFile" type="file" accept="application/json" hidden />
+        <button id="importBtn" type="button" class="alt">Import Data</button>
+      </div>
+      <ul id="results" class="cards"></ul>
     </section>
   </main>
+
+  <footer>
+    <small>Local data is saved in your browser. Installable as a PWA.</small>
+  </footer>
+
   <script src="app.js"></script>
 </body>
 </html>
